@@ -24,11 +24,11 @@
             </p>
             <p class="font-semibold mt-2">What You will Learn:</p>
             <ul class="list-disc list-inside ml-2">
-              <li>✅ What is Fundamental Analysis – and why it works</li>
-              <li>✅ How to read financial statements like a pro</li>
-              <li>✅ Key ratios that reveal the real health of a company</li>
-              <li>✅ Valuation basics – understanding Intrinsic Value</li>
-              <li>✅ Common mistakes beginners make (and how to avoid them)</li>
+              <li>What is Fundamental Analysis – and why it works</li>
+              <li>How to read financial statements like a pro</li>
+              <li>Key ratios that reveal the real health of a company</li>
+              <li>Valuation basics – understanding Intrinsic Value</li>
+              <li>Common mistakes beginners make (and how to avoid them)</li>
             </ul>
             <p class="mt-2 font-semibold">👉 Reserve Your Spot – Limited Seats!</p>
           </div>
@@ -41,12 +41,12 @@
             </p>
             <p class="font-semibold mt-2">What You will Learn:</p>
             <ul class="list-disc list-inside ml-2">
-              <li>✅ How to set smart financial goals</li>
-              <li>✅ Budgeting hacks to control your money (without guilt)</li>
-              <li>✅ The 50/30/20 rule – how to use it right</li>
-              <li>✅ Building an emergency fund – the smart way</li>
-              <li>✅ Basics of saving, investing, and protecting your income</li>
-              <li>✅ Psychology of money – build habits that stick</li>
+              <li>How to set smart financial goals</li>
+              <li>Budgeting hacks to control your money (without guilt)</li>
+              <li>The 50/30/20 rule – how to use it right</li>
+              <li>Building an emergency fund – the smart way</li>
+              <li>Basics of saving, investing, and protecting your income</li>
+              <li>Psychology of money – build habits that stick</li>
             </ul>
             <p class="mt-2 font-semibold">👉 Join Now – Seats Are Filling Fast!</p>
           </div>
