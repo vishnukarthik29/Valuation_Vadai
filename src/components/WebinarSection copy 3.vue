@@ -22,7 +22,7 @@
               Join our FREE 60-minute webinar and learn how to pick quality stocks using real data –
               not hype.
             </p>
-            <p class="font-semibold mt-2">What You will Learn:</p>
+            <p class="mt-2">What You will Learn:</p>
             <ul class="list-disc list-inside ml-2">
               <li>✅ What is Fundamental Analysis – and why it works</li>
               <li>✅ How to read financial statements like a pro</li>
@@ -41,7 +41,7 @@
             <p class="mt-2">
               In this FREE 60-minute webinar, learn the money skills your school never taught you.
             </p>
-            <p class="font-semibold mt-2">What You will Learn:</p>
+            <p class="mt-2">What You will Learn:</p>
             <ul class="list-disc list-inside ml-2">
               <li>✅ How to set smart financial goals</li>
               <li>✅ Budgeting hacks to control your money (without guilt)</li>
@@ -59,7 +59,7 @@
         <div class="webinar-form">
           <form @submit.prevent="submitForm">
             <div class="form-group">
-              <!-- <label for="fullName" class="block text-lg font-semibold text-black">Full Name</label> -->
+              <label for="fullName" class="block text-lg font-semibold text-black">Full Name</label>
               <input
                 type="text"
                 id="fullName"
@@ -70,31 +70,25 @@
             </div>
 
             <div class="form-group">
-              <!-- <label for="phone" class="block text-lg font-semibold text-black"
+              <label for="phone" class="block text-lg font-semibold text-black"
                 >WhatsApp Number</label
-              > -->
+              >
               <div class="phone-input">
                 <input type="text" class="country-code" value="+91" readonly />
-                <div class="relative w-full">
-                  <i
-                    class="bi bi-whatsapp text-green-500 absolute left-4 top-1/2 transform -translate-y-1/2 text-xl"
-                  ></i>
-                  <input
-                    type="tel"
-                    v-model="formData.phone"
-                    placeholder="Enter your WhatsApp number"
-                    class="w-full rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400"
-                    style="padding-left: 40px"
-                    required
-                  />
-                </div>
+                <input
+                  type="tel"
+                  id="phone"
+                  v-model="formData.phone"
+                  placeholder="Enter your WhatsApp number"
+                  required
+                />
               </div>
             </div>
 
             <div class="form-group">
-              <!-- <label for="email" class="block text-lg font-semibold text-black"
+              <label for="email" class="block text-lg font-semibold text-black"
                 >Email Address</label
-              > -->
+              >
               <input
                 type="email"
                 id="email"
@@ -115,7 +109,7 @@
 
             <div class="form-group">
               <label for="webinarDate" class="block text-lg font-semibold text-black"
-                >Date and Time</label
+                >Date and Language</label
               >
               <select id="webinarDate" v-model="formData.webinarDate" required>
                 <option style="color: #000000" value="">Select Date and Language</option>
@@ -145,12 +139,10 @@
               </select>
             </div>
 
-            <!-- <div class="checkbox-group">
+            <div class="checkbox-group">
               <input type="checkbox" id="terms" v-model="formData.terms" required />
-              <label class="terms" for="terms"
-                >By signing up, you agree to our Terms & Conditions</label
-              >
-            </div> -->
+              <label for="terms">By signing up, you agree to our Terms & Conditions</label>
+            </div>
 
             <button style="color: #000000" type="submit" class="webinar-cta">
               Join Free Webinar
@@ -174,7 +166,7 @@ export default {
         webinarType: 'fundamental', // default
         webinarDate: '',
         hearAbout: '',
-        // terms: false,
+        terms: false,
       },
     }
   },
@@ -191,36 +183,31 @@ export default {
 
 <style scoped>
 .webinar-section {
-  /* background: #f2efef; */
-  background: url('/images/subtle-prism (1).svg');
+  background: #f2efef;
   color: white;
   padding: 3rem 0;
   position: relative;
-}
-.container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  /* border: 1px solid rgba(255, 255, 255, 0.2); */
 }
 
 .webinar-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  /* align-items: center; */
+  align-items: center;
   position: relative;
   z-index: 2;
 }
 
 .webinar-form {
-  background: linear-gradient(to bottom left, #db4b2b34, #ffb1a021);
-  backdrop-filter: blur(30px);
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* background: #ffb1a0; */
+  background: #db4a2b;
+  backdrop-filter: blur(20px);
   border-radius: 24px;
   padding: 3rem;
-  border: 1px solid rgba(0, 0, 0, 0.541);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
-  /* box-shadow: 0 8px 30px #db4b2b8f; */
 }
 
 .form-group {
@@ -234,7 +221,7 @@ export default {
   border: 1px solid #000000;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.1);
-  color: black;
+  color: white;
   font-size: 1rem;
   transition: all 0.3s ease;
 }
@@ -248,7 +235,7 @@ export default {
 }
 
 .form-group input::placeholder {
-  color: black;
+  color: #ffffff;
 }
 
 .phone-input {
@@ -298,9 +285,6 @@ export default {
 .webinar-cta:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 35px #f77b064d;
-}
-.terms {
-  color: #000000;
 }
 
 /* Responsive Design */

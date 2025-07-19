@@ -119,7 +119,9 @@
             <router-link to="/appointment" class="btn btn-secondary">
               Schedule Consultation
             </router-link>
-            <router-link to="/" class="btn btn-outline-white"> Join Free Webinar </router-link>
+            <router-link to="/#webinar" class="btn btn-outline-white">
+              Join Free Webinar
+            </router-link>
           </div>
         </div>
       </div>

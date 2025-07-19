@@ -135,7 +135,7 @@
           <!-- Contact Information -->
           <div style="display: flex; flex-direction: column; gap: 32px">
             <!-- Contact Info -->
-            <div class="card">
+            <!-- <div class="card">
               <h3 class="card-title">Contact Information</h3>
               <div class="contact-item">
                 <span class="contact-icon">📞</span>
@@ -158,10 +158,10 @@
                   <p style="color: #666" v-html="contactInfo.address"></p>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- Office Hours -->
-            <div class="card">
+            <!-- <div class="card">
               <h3 class="card-title">Office Hours</h3>
               <div class="office-hours" v-for="(hours, day) in officeHours" :key="day">
                 <span style="font-weight: 500">{{ day }}</span>
@@ -178,7 +178,7 @@
                   For urgent matters, please call us directly
                 </p>
               </div>
-            </div>
+            </div> -->
 
             <!-- What to Expect -->
             <div class="card">
@@ -201,7 +201,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- <section class="cta-section">
       <div class="container">
         <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 16px">
           Ready to Get Started?
@@ -215,7 +215,7 @@
           <a :href="`mailto:${contactInfo.email}`" class="btn">✉️ Send Email</a>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 

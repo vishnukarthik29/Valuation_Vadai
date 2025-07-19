@@ -1,7 +1,7 @@
 <template>
   <WebinarSection />
   <TestimonialsSection />
-  <FaqSection />
+  <!-- <FaqSection /> -->
 </template>
 <script>
 import WebinarSection from '@/components/WebinarSection.vue'
