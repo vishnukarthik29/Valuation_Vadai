@@ -32,18 +32,17 @@
         <swiper-slide v-for="testimonial in testimonials" :key="testimonial.id">
           <div class="testimonial-card">
             <div class="">
-              <div class="top-6 left-6 text-white/30 text-4xl font-serif">
-                "
+              <div class="top-6 left-6 text-white/30 text-2xl font-serif">
                 <span class="text-white italic mb-8 text-lg leading-relaxed font-medium">
                   {{ testimonial.text }}
                 </span>
-                <div class="top-6 right-6 text-white/30 text-4xl font-serif">"</div>
+                <!-- <div class="top-6 right-6 text-white/30 text-4xl font-serif">"</div> -->
               </div>
               <div class="testimonial-author">
                 <div class="author-avatar">{{ testimonial.avatar }}</div>
                 <div class="author-info">
                   <h4
-                    class="text-white font-bold text-lg mb-1 group-hover:text-gray-800 transition-colors underline"
+                    class="text-white font-bold text-lg mb-1 group-hover:text-gray-800 transition-colors"
                   >
                     {{ testimonial.name }}
                   </h4>
@@ -157,17 +156,17 @@ export default {
   background: #332a2e;
   backdrop-filter: blur(20px);
   border-radius: 24px;
-  padding: 3rem;
+  padding: 2rem;
   border: 1px solid #db4a2b;
   transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-height: 280px;
-  box-sizing: border-box;
+  /* position: relative; */
+  /* overflow: hidden; */
+  /* width: 100%; */
+  /* min-height: 280px; */
+  /* box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 .testimonial-card:hover {

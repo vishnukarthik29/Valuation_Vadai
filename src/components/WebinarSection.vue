@@ -12,13 +12,13 @@
           </h1>
           <div
             v-if="formData.webinarType === 'fundamental'"
-            class="text-gray-700 text-base leading-relaxed mt-4"
+            class="text-gray-700 text-base leading-relaxed mt-6"
           >
-            <p class="font-semibold mb-2">
+            <p class="font-semibold">
               Decode the Stock Market – A Beginner’s Guide to Fundamental Analysis
             </p>
             <p>Stop guessing the market. Start understanding it.</p>
-            <p class="mt-2">
+            <p class="">
               Join our FREE 60-minute webinar and learn how to pick quality stocks using real data –
               not hype.
             </p>
@@ -34,11 +34,9 @@
           </div>
 
           <div v-else class="text-gray-700 text-base leading-relaxed mt-4">
-            <p class="font-semibold mb-2">
-              Money Mastery 101 – Build Your Personal Finance Foundation
-            </p>
+            <p class="font-semibold">Money Mastery 101 – Build Your Personal Finance Foundation</p>
             <p>Your salary does not make you rich. Your habits do.</p>
-            <p class="mt-2">
+            <p class="">
               In this FREE 60-minute webinar, learn the money skills your school never taught you.
             </p>
             <p class="font-semibold mt-2">What You will Learn:</p>
@@ -152,7 +150,7 @@
               >
             </div> -->
 
-            <button style="color: #000000" type="submit" class="webinar-cta">
+            <button style="color: #ffffff; background: #df4a2f" type="submit" class="webinar-cta">
               Join Free Webinar
             </button>
           </form>
