@@ -348,6 +348,7 @@ export default {
   /* padding: 48px 16px; */
   padding-left: 16px;
   padding-right: 16px;
+  padding-bottom: 48px;
 }
 
 .grid {
