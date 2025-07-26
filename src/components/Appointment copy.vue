@@ -3,7 +3,7 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <!-- <div class="badge">Schedule Your Consultation</div> -->
+        <div class="badge">Schedule Your Consultation</div>
         <h1>
           Book Your
           <span class="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent"
@@ -11,7 +11,10 @@
           >
           Consultation
         </h1>
-        <p>Schedule a consultation to discuss your investment goals.</p>
+        <p>
+          Get personalized financial advice from our certified experts. Schedule a consultation to
+          discuss your valuation needs and investment goals.
+        </p>
       </div>
     </section>
 
@@ -77,7 +80,7 @@
                 <span v-if="errors.phone" class="error-message">{{ errors.phone }}</span>
               </div>
               <div class="form-group">
-                <label>Occupation</label>
+                <label>Company/Organization</label>
                 <input
                   type="text"
                   class="form-input"
@@ -86,7 +89,7 @@
                 />
               </div>
               <div class="form-group">
-                <label>Income Range *</label>
+                <label>Service Required *</label>
                 <select
                   class="form-input"
                   v-model="form.service"
@@ -121,11 +124,11 @@
                 style="width: 100%; padding: 12px"
                 :disabled="isSubmitting"
               >
-                {{ isSubmitting ? 'Scheduling...' : 'Schedule Appointment' }}
+                {{ isSubmitting ? 'Scheduling...' : '📅 Schedule Appointment' }}
               </button>
-              <!-- <p style="font-size: 12px; color: #666; text-align: center; margin-top: 16px">
+              <p style="font-size: 12px; color: #666; text-align: center; margin-top: 16px">
                 By submitting this form, you agree to our Terms & Conditions and Privacy Policy
-              </p> -->
+              </p>
             </form>
           </div>
 
@@ -358,9 +361,7 @@ export default {
 
 .appointment-page {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  /* background-color: #fff1ef; */
-  /* background: url('/images/subtle-prism (1).svg'); */
-  background: #ffffff;
+  background-color: #fff1ef;
   color: #332a2e;
   line-height: 1.6;
 }

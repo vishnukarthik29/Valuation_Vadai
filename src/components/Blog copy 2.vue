@@ -3,13 +3,8 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <!-- <div class="badge">Financial Insights & Expert Analysis</div> -->
-        <h1>
-          Our
-          <span class="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent"
-            >Financial Blog</span
-          >
-        </h1>
+        <div class="badge">Financial Insights & Expert Analysis</div>
+        <h1>Our <span class="highlight">Financial Blog</span></h1>
         <p>
           Stay updated with the latest insights, market analysis, and expert advice from our team of
           financial professionals.
@@ -37,7 +32,7 @@
     </section>
 
     <!-- Featured Post -->
-    <!-- <section v-if="showFeatured" class="featured">
+    <section v-if="showFeatured" class="featured">
       <div class="container">
         <div class="section-title">
           <h2>Featured Article</h2>
@@ -78,7 +73,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- Blog Posts Grid -->
     <section class="blog-section">
@@ -683,7 +678,6 @@ body {
 .hero {
   padding: 5rem 0;
   text-align: center;
-  background: url('/images/subtle-prism (1).svg');
 }
 
 .badge {

@@ -2,7 +2,7 @@
   <header
     class="bg-red-600 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50 transition-all duration-300"
   >
-    <div class="max-w-screen-xxl mx-auto ml-4 mr-4 px-2 py-2 sm:px-4">
+    <div class="max-w-screen-xxl mx-auto ml-10 mr-10 px-2 py-2 sm:px-4">
       <div class="flex justify-between items-center px-2 py-4">
         <!-- Logo Section -->
         <div class="flex items-center gap-2">

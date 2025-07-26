@@ -2,21 +2,53 @@
   <div>
     <!-- Hero Section -->
     <section class="hero">
-      <div class="">
-        <!-- <div class="badge">About Valuation and Vadai</div> -->
-        <h1>
-          Empowering Your
-          <span class="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent"
-            >Financial Future</span
-          >
-        </h1>
+      <div class="container">
+        <div class="badge">About Valuation and Vadai</div>
+        <h1>Empowering Your <span class="text-primary">Financial Future</span></h1>
         <p>
-          We are a team of finance enthusiasts on a mission to make personal finance and investing
-          simple, relatable, and accessible. At Valuation & Vadai, we break down complex financial
-          concepts into engaging content, from equity research and company analysis to practical
-          money tips. With a unique blend of depth, clarity, and local flavor, we aim to empower the
-          next generation of investors to make smarter financial decisions.
+          We are a team of dedicated financial experts committed to helping individuals and
+          businesses make smarter investment decisions through comprehensive analysis and strategic
+          guidance.
         </p>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="section section-secondary">
+      <div class="container">
+        <div class="grid-2">
+          <div>
+            <h2 class="story-title">Our Story</h2>
+            <p class="story-text">
+              Founded in 2018, Valuation and Vadai emerged from a simple belief: that everyone
+              deserves access to expert financial guidance. Our founder, Rajesh Vadai, recognized
+              the gap between complex financial markets and individual investors' understanding.
+            </p>
+            <p class="story-text">
+              What started as a small consulting practice has grown into a comprehensive financial
+              advisory firm, serving over 500 clients across various industries. We've helped
+              businesses unlock their true value and guided individuals toward financial
+              independence.
+            </p>
+            <div class="stats">
+              <div>
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Happy Clients</div>
+              </div>
+              <div>
+                <div class="stat-number">₹50Cr+</div>
+                <div class="stat-label">Assets Valued</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop"
+              alt="Our office"
+              class="office-image"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -42,6 +74,7 @@
       <div class="container">
         <div class="section-title">
           <h2>Meet Our Team</h2>
+          <p>Experienced professionals dedicated to your success</p>
         </div>
         <div class="grid-3">
           <div class="card team-card" v-for="member in teamMembers" :key="member.id">
@@ -55,7 +88,7 @@
     </section>
 
     <!-- Why Choose Us -->
-    <!-- <section class="section">
+    <section class="section">
       <div class="container">
         <div class="section-title">
           <h2>Why Choose Us?</h2>
@@ -71,10 +104,10 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- CTA Section -->
-    <!-- <section class="section section-primary">
+    <section class="section section-primary">
       <div class="container">
         <div class="cta-content">
           <h2 class="cta-title">Ready to Transform Your Financial Future?</h2>
@@ -92,7 +125,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
   </div>
 </template>
 
@@ -104,73 +137,55 @@ export default {
       values: [
         {
           id: 1,
-          icon: '🔍',
-          title: 'Clarity Over Complexity',
+          icon: '🛡️',
+          title: 'Trust & Transparency',
           description:
-            'We simplify finance so everyone can understand, apply, and grow confidently.',
+            'We believe in complete transparency in all our dealings and build lasting relationships based on trust.',
         },
         {
           id: 2,
-          icon: '🤝',
-          title: 'Community-Driven Growth',
-          description: 'We grow with our audience, listening, learning, and evolving together.',
+          icon: '🎯',
+          title: 'Results-Driven',
+          description:
+            'Our focus is on delivering measurable results that align with your financial goals and objectives.',
         },
         {
           id: 3,
-          icon: '📈',
-          title: 'Trust-First Advisory',
-          description: 'We offer honest, research-backed advice aligned with your financial goals.',
+          icon: '💡',
+          title: 'Innovation',
+          description:
+            'We continuously evolve our methodologies to incorporate the latest financial analysis techniques.',
         },
         {
           id: 4,
-          icon: '📚',
-          title: 'Learning is Lifelong',
+          icon: '❤️',
+          title: 'Client-Centric',
           description:
-            'Our courses turn complex topics into practical knowledge for every stage of investing.',
+            'Every strategy we develop is tailored to meet the unique needs and circumstances of our clients.',
         },
       ],
       teamMembers: [
         {
           id: 1,
-          name: 'Sivarama',
-          role: 'Content Architect',
-          description:
-            'Shapes financial stories that inform, engage, and resonate with every viewer.',
+          name: 'Rajesh Vadai',
+          role: 'Founder & CEO',
+          description: '15+ years in financial consulting and business valuations',
           image:
             'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
         },
         {
           id: 2,
-          name: 'Pugazharasan P',
-          role: 'Community Voice & Brand Face',
-          description:
-            'Builds deep audience connections through relatable content and trend-savvy communication.',
+          name: 'Priya Sharma',
+          role: 'Head of Valuations',
+          description: 'Certified valuation analyst with expertise in multiple industries',
           image:
             'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
         },
         {
           id: 3,
-          name: 'Ganesh Ram',
-          role: 'Chief Content Strategist',
-          description:
-            'Oversees our content vision, ensuring every piece is clear, credible, and impactful.',
-          image:
-            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
-        },
-        {
-          id: 4,
-          name: 'Siva Prakash B',
-          role: 'Investment Insights Analyst',
-          description:
-            'Balances deep research with smooth execution across content, advisory, and collaborations.',
-          image:
-            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
-        },
-        {
-          id: 5,
-          name: 'Krishna',
-          role: 'Research & Operations Lead ',
-          description: 'Brings data-driven analysis to power our content and advisory decisions.',
+          name: 'Arjun Patel',
+          role: 'Investment Advisor',
+          description: 'Strategic investment planning and portfolio management specialist',
           image:
             'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
         },
@@ -223,8 +238,7 @@ export default {
 .hero {
   padding: 80px 16px;
   text-align: center;
-  background: url('/images/subtle-prism (1).svg');
-  /* background-color: #fff1ef; */
+  background-color: #fff1ef;
 }
 
 .badge {
@@ -238,10 +252,10 @@ export default {
 }
 
 .hero h1 {
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: bold;
   margin-bottom: 24px;
-  /* max-width: 768px; */
+  max-width: 768px;
   margin-left: auto;
   margin-right: auto;
   color: #332a2e;
@@ -264,8 +278,7 @@ export default {
 }
 
 .section-secondary {
-  /* background: #f2efef; */
-  background: #fff1ef;
+  background: #f2efef;
 }
 
 .section-primary {
