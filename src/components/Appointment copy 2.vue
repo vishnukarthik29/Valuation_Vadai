@@ -1,5 +1,5 @@
 <template>
-  <div class="appointment-page" id="Appointment">
+  <div class="appointment-page">
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
@@ -19,23 +19,6 @@
     <section class="main-content">
       <div class="container">
         <div class="grid">
-          <div style="display: flex; flex-direction: column; gap: 32px">
-            <!-- What to Expect -->
-            <div class="card">
-              <h3 class="card-title">What to Expect</h3>
-              <div
-                v-for="(item, index) in expectations"
-                :key="index"
-                style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px"
-              >
-                <span style="color: #db4a2b">✅</span>
-                <div>
-                  <p style="font-weight: 500">{{ item.title }}</p>
-                  <p style="font-size: 14px; color: #666">{{ item.description }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
           <!-- Appointment Form -->
           <div class="card">
             <h2 class="card-title">Schedule Your Appointment</h2>
@@ -95,32 +78,29 @@
               </div>
               <div class="form-group">
                 <label>Occupation</label>
-                <select class="form-input" v-model="form.occupation">
-                  <option value="">Select your occupation</option>
-                  <option value="student">Student</option>
-                  <option value="salaried">Salaried</option>
-                  <option value="self-employed">Self Employed</option>
-                  <option value="others">Others</option>
-                </select>
+                <input
+                  type="text"
+                  class="form-input"
+                  placeholder="Enter your company name"
+                  v-model="form.company"
+                />
               </div>
               <div class="form-group">
                 <label>Income Range *</label>
                 <select
                   class="form-input"
-                  v-model="form.incomeRange"
-                  :class="{ error: errors.incomeRange }"
+                  v-model="form.service"
+                  :class="{ error: errors.service }"
                   required
                 >
-                  <option value="">Select your income range</option>
-                  <option value="less-than-1-lakh">Less than ₹1 Lakh</option>
-                  <option value="1-3-lakh">₹1 - 3 Lakh</option>
-                  <option value="3-6-lakh">₹3 - 6 Lakh</option>
-                  <option value="6-10-lakh">₹6 - 10 Lakh</option>
-                  <option value="greater-than-10-lakh">Greater than ₹10 Lakh</option>
+                  <option value="">Select a service</option>
+                  <option value="business-valuation">Business Valuation</option>
+                  <option value="investment-advisory">Investment Advisory</option>
+                  <option value="financial-planning">Financial Planning</option>
+                  <option value="webinar-consultation">Webinar Consultation</option>
+                  <option value="other">Other</option>
                 </select>
-                <span v-if="errors.incomeRange" class="error-message">{{
-                  errors.incomeRange
-                }}</span>
+                <span v-if="errors.service" class="error-message">{{ errors.service }}</span>
               </div>
               <div class="form-group">
                 <label>Preferred Date & Time</label>
@@ -143,11 +123,96 @@
               >
                 {{ isSubmitting ? 'Scheduling...' : 'Schedule Appointment' }}
               </button>
+              <!-- <p style="font-size: 12px; color: #666; text-align: center; margin-top: 16px">
+                By submitting this form, you agree to our Terms & Conditions and Privacy Policy
+              </p> -->
             </form>
+          </div>
+
+          <!-- Contact Information -->
+          <div style="display: flex; flex-direction: column; gap: 32px">
+            <!-- Contact Info -->
+            <!-- <div class="card">
+              <h3 class="card-title">Contact Information</h3>
+              <div class="contact-item">
+                <span class="contact-icon">📞</span>
+                <div>
+                  <p style="font-weight: 500">Phone</p>
+                  <p style="color: #666">{{ contactInfo.phone }}</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-icon">✉️</span>
+                <div>
+                  <p style="font-weight: 500">Email</p>
+                  <p style="color: #666">{{ contactInfo.email }}</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <div>
+                  <p style="font-weight: 500">Address</p>
+                  <p style="color: #666" v-html="contactInfo.address"></p>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- Office Hours -->
+            <!-- <div class="card">
+              <h3 class="card-title">Office Hours</h3>
+              <div class="office-hours" v-for="(hours, day) in officeHours" :key="day">
+                <span style="font-weight: 500">{{ day }}</span>
+                <span style="color: #666">{{ hours }}</span>
+              </div>
+              <div class="highlight-box">
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <span>🕐</span>
+                  <span style="font-weight: 500; font-size: 14px"
+                    >Emergency Consultations Available</span
+                  >
+                </div>
+                <p style="font-size: 12px; color: #666; margin-top: 4px">
+                  For urgent matters, please call us directly
+                </p>
+              </div>
+            </div> -->
+
+            <!-- What to Expect -->
+            <div class="card">
+              <h3 class="card-title">What to Expect</h3>
+              <div
+                v-for="(item, index) in expectations"
+                :key="index"
+                style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px"
+              >
+                <span style="color: #db4a2b">✅</span>
+                <div>
+                  <p style="font-weight: 500">{{ item.title }}</p>
+                  <p style="font-size: 14px; color: #666">{{ item.description }}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- CTA Section -->
+    <!-- <section class="cta-section">
+      <div class="container">
+        <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 16px">
+          Ready to Get Started?
+        </h2>
+        <p style="font-size: 1.25rem; color: #666; margin-bottom: 32px">
+          Don't wait - schedule your consultation today and take the first step towards better
+          financial decisions.
+        </p>
+        <div class="btn-group">
+          <a :href="`tel:${contactInfo.phoneNumber}`" class="btn btn-primary">📞 Call Now</a>
+          <a :href="`mailto:${contactInfo.email}`" class="btn">✉️ Send Email</a>
+        </div>
+      </div>
+    </section> -->
   </div>
 </template>
 
@@ -161,8 +226,8 @@ export default {
         lastName: '',
         email: '',
         phone: '',
-        occupation: '',
-        incomeRange: '',
+        company: '',
+        service: '',
         preferredDateTime: '',
         message: '',
       },
@@ -221,8 +286,8 @@ export default {
         this.errors.phone = 'Phone number is required'
       }
 
-      if (!this.form.incomeRange) {
-        this.errors.incomeRange = 'Please select your income range'
+      if (!this.form.service) {
+        this.errors.service = 'Please select a service'
       }
 
       return Object.keys(this.errors).length === 0
@@ -273,8 +338,8 @@ export default {
         lastName: '',
         email: '',
         phone: '',
-        occupation: '',
-        incomeRange: '',
+        company: '',
+        service: '',
         preferredDateTime: '',
         message: '',
       }
@@ -308,11 +373,7 @@ export default {
 
 /* Hero Section */
 .hero {
-  /* padding: 80px 16px; */
-  padding-top: 35px;
-  padding-left: 16px;
-  padding-right: 16px;
-
+  padding: 80px 16px;
   text-align: center;
 }
 
@@ -345,9 +406,7 @@ export default {
 
 /* Main Content */
 .main-content {
-  /* padding: 48px 16px; */
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 48px 16px;
 }
 
 .grid {

@@ -43,76 +43,64 @@
         <div class="section-title">
           <h2>Meet Our Team</h2>
         </div>
-
-        <!-- Swiper for Team -->
-        <div class="swiper-container-wrapper">
-          <swiper
-            :slidesPerView="1"
-            :spaceBetween="30"
-            :loop="true"
-            :pagination="{
-              clickable: true,
-            }"
-            :navigation="{
-              nextEl: '.custom-swiper-button-next',
-              prevEl: '.custom-swiper-button-prev',
-            }"
-            :modules="modules"
-            :breakpoints="{
-              768: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
-            }"
-            class="team-swiper"
-          >
-            <swiper-slide v-for="member in teamMembers" :key="member.id">
-              <div class="card team-card">
-                <img :src="member.image" :alt="member.name" />
-                <h3>{{ member.name }}</h3>
-                <p class="role">{{ member.role }}</p>
-                <p class="description">{{ member.description }}</p>
-              </div>
-            </swiper-slide>
-          </swiper>
-
-          <!-- Navigation buttons for team -->
-          <div class="custom-swiper-button-prev">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-            </svg>
-          </div>
-          <div class="custom-swiper-button-next">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-            </svg>
+        <div class="grid-3">
+          <div class="card team-card" v-for="member in teamMembers" :key="member.id">
+            <img :src="member.image" :alt="member.name" />
+            <h3>{{ member.name }}</h3>
+            <p class="role">{{ member.role }}</p>
+            <p class="description">{{ member.description }}</p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Why Choose Us -->
+    <!-- <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose Us?</h2>
+          <p>What sets us apart in the financial consulting industry</p>
+        </div>
+        <div class="feature-list">
+          <div class="feature-item" v-for="feature in features" :key="feature.id">
+            <div class="feature-icon">✅</div>
+            <div class="feature-content">
+              <h3>{{ feature.title }}</h3>
+              <p>{{ feature.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- CTA Section -->
+    <!-- <section class="section section-primary">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Transform Your Financial Future?</h2>
+          <p class="cta-text">
+            Join hundreds of satisfied clients who have achieved their financial goals with our
+            expert guidance.
+          </p>
+          <div class="cta-buttons">
+            <router-link to="/appointment" class="btn btn-secondary">
+              Schedule Consultation
+            </router-link>
+            <router-link to="/#webinar" class="btn btn-outline-white">
+              Join Free Webinar
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </section> -->
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-
 export default {
   name: 'About',
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
   data() {
     return {
-      modules: [Navigation, Pagination, Autoplay],
       values: [
         {
           id: 1,
@@ -125,7 +113,7 @@ export default {
           id: 2,
           icon: '🤝',
           title: 'Community-Driven Growth',
-          description: 'We grow with our audience, listening, learning, and evolving together.',
+          description: 'We grow with our audience, listening, learning, and evolving together.',
         },
         {
           id: 3,
@@ -182,9 +170,35 @@ export default {
           id: 5,
           name: 'Krishna',
           role: 'Research & Operations Lead ',
-          description: 'Brings data-driven analysis to power our content and advisory decisions.',
+          description: 'Brings data-driven analysis to power our content and advisory decisions.',
           image:
             'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
+        },
+      ],
+      features: [
+        {
+          id: 1,
+          title: 'Proven Track Record',
+          description:
+            'Over 6 years of successful financial consulting with measurable results for our clients.',
+        },
+        {
+          id: 2,
+          title: 'Comprehensive Services',
+          description:
+            'From business valuations to investment advisory, we offer a complete suite of financial services.',
+        },
+        {
+          id: 3,
+          title: 'Educational Approach',
+          description:
+            'We believe in empowering our clients with knowledge through regular webinars and educational content.',
+        },
+        {
+          id: 4,
+          title: 'Personalized Solutions',
+          description:
+            'Every client receives a customized strategy tailored to their unique financial situation and goals.',
         },
       ],
     }
@@ -244,12 +258,6 @@ export default {
   margin: 0 auto;
 }
 
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-}
-
 /* Sections */
 .section {
   padding: 64px 16px;
@@ -290,77 +298,61 @@ export default {
   color: rgba(255, 241, 239, 0.8);
 }
 
-/* Swiper Styles */
-.swiper-container-wrapper {
-  position: relative;
-  padding: 2rem 0;
-}
-
-.team-swiper {
-  padding: 3rem;
-}
-
-.team-swiper :deep(.swiper-slide) {
-  height: auto;
-  display: flex;
-}
-
-/* Custom Navigation Buttons (Testimonials Style) */
-.custom-swiper-button-prev,
-.custom-swiper-button-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #ffb1a0;
-  border: 2px solid #db4a2b;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
+/* Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
   align-items: center;
-  justify-content: center;
-  color: #db4a2b;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 1024px) {
+  .grid-2,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Story Section */
+.story-title {
+  font-size: 2.5rem;
   font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
+  margin-bottom: 24px;
+  color: #332a2e;
 }
 
-.custom-swiper-button-prev {
-  left: -75px;
+.story-text {
+  color: #666;
+  margin-bottom: 24px;
 }
 
-.custom-swiper-button-next {
-  right: -75px;
-}
-
-.custom-swiper-button-prev:hover,
-.custom-swiper-button-next:hover {
-  background: #db4a2b;
-  color: white;
-  transform: translateY(-50%) scale(1.1);
-}
-
-/* Hide default Swiper navigation buttons */
-.team-swiper :deep(.swiper-button-next),
-.team-swiper :deep(.swiper-button-prev) {
-  display: none;
-}
-
-/* Custom Pagination Styling */
-:deep(.swiper-pagination) {
-  bottom: 20px !important;
-}
-
-:deep(.swiper-pagination-bullet) {
-  background: rgba(219, 74, 43, 0.3);
-  width: 12px;
-  height: 12px;
-}
-
-:deep(.swiper-pagination-bullet-active) {
-  background: #db4a2b;
-  transform: scale(1.2);
+.office-image {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Cards */
@@ -418,27 +410,116 @@ export default {
   margin-top: 8px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  text-align: center;
+}
 
-  .swiper-container-wrapper {
-    margin: 0 -16px;
-    padding: 0 16px;
-  }
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #db4a2b;
+  margin-bottom: 8px;
+}
 
-  .custom-swiper-button-prev {
-    left: -15px;
-  }
+.stat-label {
+  font-size: 14px;
+  color: #666;
+}
 
-  .custom-swiper-button-next {
-    right: -15px;
-  }
+/* Why Choose Us */
+.feature-list {
+  max-width: 768px;
+  margin: 0 auto;
+}
 
-  .team-card {
-    padding: 1.5rem;
-  }
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.feature-icon {
+  color: #db4a2b;
+  font-size: 24px;
+  margin-top: 4px;
+}
+
+.feature-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #332a2e;
+}
+
+.feature-content p {
+  color: #666;
+}
+
+/* CTA Section */
+.cta-content {
+  text-align: center;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #fff1ef;
+}
+
+.cta-text {
+  font-size: 1.25rem;
+  margin-bottom: 32px;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: 1px solid #db4a2b;
+  background: #db4a2b;
+  color: #fff1ef;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: #c23e24;
+}
+
+.btn-secondary {
+  background: #fff1ef;
+  color: #332a2e;
+  border: 1px solid #fff1ef;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 241, 239, 0.9);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: #fff1ef;
+  border: 1px solid #fff1ef;
+}
+
+.btn-outline-white:hover {
+  background: #fff1ef;
+  color: #db4a2b;
 }
 </style>

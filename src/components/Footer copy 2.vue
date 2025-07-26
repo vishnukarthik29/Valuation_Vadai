@@ -20,14 +20,23 @@
         <div class="footer-section">
           <h4 class="section-title">Quick Links</h4>
           <div class="link-list">
-            <!-- <router-link to="/About" class="footer-link"> About Us </router-link> -->
-            <a href="/Valuation_Vadai/About" class="footer-link">About us</a>
+            <router-link to="/About" class="footer-link"> About Us </router-link>
             <a href="/Valuation_Vadai/#webinar" class="footer-link">Webinars</a>
             <a href="/Valuation_Vadai/Blog" class="footer-link">Blogs</a>
-            <!-- <router-link to="/appointment" class="footer-link"> Book Appointment </router-link> -->
-            <a href="/Valuation_Vadai/appointment" class="footer-link">Book Appointment</a>
+            <router-link to="/appointment" class="footer-link"> Book Appointment </router-link>
           </div>
         </div>
+
+        <!-- Services -->
+        <!-- <div class="footer-section">
+          <h4 class="section-title">Services</h4>
+          <div class="service-list">
+            <div class="service-item">Business Valuation</div>
+            <div class="service-item">Investment Advisory</div>
+            <div class="service-item">Financial Planning</div>
+            <div class="service-item">Educational Webinars</div>
+          </div>
+        </div> -->
 
         <!-- Contact Info -->
         <div class="footer-section">
