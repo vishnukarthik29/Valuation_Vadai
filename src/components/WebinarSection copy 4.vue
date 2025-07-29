@@ -106,10 +106,8 @@
                 >Webinar Type</label
               >
               <select id="webinarType" v-model="formData.webinarType" required>
-                <option style="color: #000000" value="Fundamental Analysis">
-                  Fundamental Analysis
-                </option>
-                <option style="color: #000000" value="Money Mastery 101">Money Mastery 101</option>
+                <option style="color: #000000" value="fundamental">Fundamental Analysis</option>
+                <option style="color: #000000" value="money">Money Mastery 101</option>
               </select>
             </div>
 
@@ -118,10 +116,16 @@
                 >Date and Time</label
               >
               <select id="webinarDate" v-model="formData.webinarDate" required>
-                <option style="color: #000000" value="">Select Date and Time</option>
-                <option style="color: #000000" value="jul23">Jul 23 | 07:00 PM</option>
-                <option style="color: #000000" value="jul24">Jul 24 | 07:00 PM</option>
-                <option style="color: #000000" value="jul25">Jul 25 | 07:00 PM</option>
+                <option style="color: #000000" value="">Select Date and Language</option>
+                <option style="color: #000000" value="jul23-english">
+                  Jul 23 | 07:00 PM | English
+                </option>
+                <option style="color: #000000" value="jul24-hindi">
+                  Jul 24 | 07:00 PM | Hindi
+                </option>
+                <option style="color: #000000" value="jul25-english">
+                  Jul 25 | 07:00 PM | English
+                </option>
               </select>
             </div>
 
@@ -157,8 +161,6 @@
 </template>
 
 <script>
-import emailjs from 'emailjs-com'
-
 export default {
   name: 'WebinarSection',
   data() {
@@ -167,39 +169,19 @@ export default {
         fullName: '',
         phone: '',
         email: '',
-        webinarType: 'Fundamental Analysis',
+        webinarType: 'fundamental', // default
         webinarDate: '',
         hearAbout: '',
+        // terms: false,
       },
     }
   },
   methods: {
     submitForm() {
-      emailjs
-        .send(
-          'service_5dogksj', // ✅ Your Service ID
-          'template_9070btn', // ✅ Your Template ID
-          this.formData, // 🚀 Form data
-          'HTFS9qX8vFp_ehgL2', // 🔑 Your EmailJS Public Key
-        )
-        .then(() => {
-          alert('✅ You are registered! A confirmation email has been sent.')
-          this.resetForm()
-        })
-        .catch((error) => {
-          console.error('❌ Email send error:', error)
-          alert('Error: Could not send email. Please try again.')
-        })
-    },
-    resetForm() {
-      this.formData = {
-        fullName: '',
-        phone: '',
-        email: '',
-        webinarType: 'Fundamental Analysis',
-        webinarDate: '',
-        hearAbout: '',
-      }
+      // Handle form submission
+      console.log('Form submitted:', this.formData)
+      // Add your form submission logic here
+      alert('Thank you for registering! We will contact you soon.')
     },
   },
 }
