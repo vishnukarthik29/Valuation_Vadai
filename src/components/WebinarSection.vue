@@ -146,8 +146,39 @@
               >
             </div> -->
 
-            <button style="color: #ffffff; background: #df4a2f" type="submit" class="webinar-cta">
+            <!-- <button style="color: #ffffff; background: #df4a2f" type="submit" class="webinar-cta">
               Join Free Webinar
+            </button> -->
+            <button
+              type="submit"
+              style="color: #ffffff; background: #df4a2f"
+              :disabled="isLoading"
+              class="webinar-cta"
+            >
+              <span v-if="isLoading">
+                <svg
+                  class="animate-spin h-5 w-5 text-white inline-block mr-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  />
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
+                </svg>
+                Sending...
+              </span>
+              <span v-else>Join Free Webinar</span>
             </button>
           </form>
         </div>
@@ -171,35 +202,32 @@ export default {
         webinarDate: '',
         hearAbout: '',
       },
+      isLoading: false, // ⏳ Flag for loader
     }
   },
   methods: {
     submitForm() {
+      this.isLoading = true
       emailjs
-        .send(
-          'service_5dogksj', // ✅ Your Service ID
-          'template_9070btn', // ✅ Your Template ID
-          this.formData, // 🚀 Form data
-          'HTFS9qX8vFp_ehgL2', // 🔑 Your EmailJS Public Key
-        )
+        .send('service_5dogksj', 'template_9070btn', this.formData, 'HTFS9qX8vFp_ehgL2')
         .then(() => {
           alert('✅ You are registered! A confirmation email has been sent.')
-          this.resetForm()
+          this.formData = {
+            fullName: '',
+            phone: '',
+            email: '',
+            webinarType: 'Fundamental Analysis',
+            webinarDate: '',
+            hearAbout: '',
+          }
         })
         .catch((error) => {
           console.error('❌ Email send error:', error)
           alert('Error: Could not send email. Please try again.')
         })
-    },
-    resetForm() {
-      this.formData = {
-        fullName: '',
-        phone: '',
-        email: '',
-        webinarType: 'Fundamental Analysis',
-        webinarDate: '',
-        hearAbout: '',
-      }
+        .finally(() => {
+          this.isLoading = false
+        })
     },
   },
 }
