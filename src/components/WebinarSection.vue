@@ -109,7 +109,7 @@
                 <option style="color: #000000" value="Fundamental Analysis">
                   Fundamental Analysis
                 </option>
-                <option style="color: #000000" value="Money Mastery 101">Money Mastery 101</option>
+                <!-- <option style="color: #000000" value="Money Mastery 101">Money Mastery 101</option> -->
               </select>
             </div>
 
