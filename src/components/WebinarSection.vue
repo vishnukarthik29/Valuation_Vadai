@@ -11,7 +11,7 @@
             Webinar
           </h1>
           <div
-            v-if="formData.webinarType === 'fundamental'"
+            v-if="formData.webinarType === 'Fundamental Analysis'"
             class="text-gray-700 text-base leading-relaxed mt-6"
           >
             <p class="font-semibold">

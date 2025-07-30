@@ -11,9 +11,9 @@
             <img src="/images/footer.jpg" style="width: 25px; height: 25px" />
             <span class="brand-name">Valuation and Vadai</span>
           </div>
-          <p class="brand-description">
+          <!-- <p class="brand-description">
             Expert financial consulting and valuation services for businesses and individuals.
-          </p>
+          </p> -->
         </div>
 
         <!-- Quick Links -->
@@ -23,7 +23,7 @@
             <!-- <router-link to="/About" class="footer-link"> About Us </router-link> -->
             <a href="/Valuation_Vadai/About" class="footer-link">About us</a>
             <a href="/Valuation_Vadai/#webinar" class="footer-link">Webinars</a>
-            <a href="/Valuation_Vadai/Blog" class="footer-link">Blogs</a>
+            <!-- <a href="/Valuation_Vadai/Blog" class="footer-link">Blogs</a> -->
             <!-- <router-link to="/appointment" class="footer-link"> Book Appointment </router-link> -->
             <a href="/Valuation_Vadai/appointment" class="footer-link">Book Appointment</a>
           </div>
@@ -33,10 +33,10 @@
         <div class="footer-section">
           <h4 class="section-title">Contact Info</h4>
           <div class="contact-list">
-            <div class="contact-item">
+            <!-- <div class="contact-item">
               <span class="contact-icon">📞</span>
               <span class="contact-text">+91 98765 43210</span>
-            </div>
+            </div> -->
             <div class="contact-item">
               <span class="contact-icon">✉️</span>
               <span class="contact-text">info@valuationvadai.com</span>

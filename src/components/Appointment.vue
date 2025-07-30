@@ -94,8 +94,8 @@
                 <span v-if="errors.phone" class="error-message">{{ errors.phone }}</span>
               </div>
               <div class="form-group">
-                <label>Occupation</label>
-                <select class="form-input" v-model="form.occupation">
+                <label>Occupation *</label>
+                <select class="form-input" v-model="form.occupation" required>
                   <option value="">Select your occupation</option>
                   <option value="student">Student</option>
                   <option value="salaried">Salaried</option>
@@ -123,18 +123,17 @@
                 }}</span>
               </div>
               <div class="form-group">
-                <label>Preferred Date & Time</label>
-                <input
-                  type="datetime-local"
-                  class="form-input"
-                  v-model="form.preferredDateTime"
-                  @click="openCalendlyPopup"
-                  readonly
-                  placeholder="Click to select date & time via Calendly"
-                  style="cursor: pointer"
-                />
-                <small style="color: #666; font-size: 12px">Click to open Calendly scheduler</small>
+                <label>Preferred Day</label>
+                <select class="form-input" v-model="form.preferredDay" required>
+                  <option disabled value="">Select a day</option>
+                  <option value="Saturday">Saturday</option>
+                  <option value="Sunday">Sunday</option>
+                </select>
+                <!-- <small style="color: #666; font-size: 12px">
+                  Select your preferred consultation day
+                </small> -->
               </div>
+
               <div class="form-group">
                 <label>Message</label>
                 <textarea
@@ -157,13 +156,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Hidden Calendly Inline Widget -->
-    <div
-      class="calendly-inline-widget"
-      data-url="https://calendly.com/vishnukarthik2912/one-to-one-consulation"
-      style="display: none; min-width: 320px; height: 700px"
-    ></div>
   </div>
 </template>
 
@@ -181,12 +173,11 @@ export default {
         phone: '',
         occupation: '',
         incomeRange: '',
-        preferredDateTime: '',
+        preferredDay: '',
         message: '',
       },
       errors: {},
       isSubmitting: false,
-      calendlyLoaded: false,
       expectations: [
         {
           title: 'Initial Consultation (30 mins)',
@@ -207,74 +198,14 @@ export default {
       ],
     }
   },
-  mounted() {
-    this.loadCalendly()
+  computed: {
+    minDate() {
+      // Set minimum date to today
+      const today = new Date()
+      return today.toISOString().split('T')[0]
+    },
   },
   methods: {
-    loadCalendly() {
-      // Load Calendly CSS
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = 'https://assets.calendly.com/assets/external/widget.css'
-      document.head.appendChild(link)
-
-      // Load Calendly JS
-      const script = document.createElement('script')
-      script.src = 'https://assets.calendly.com/assets/external/widget.js'
-      script.async = true
-      script.onload = () => {
-        this.calendlyLoaded = true
-        this.initializeCalendlyInline()
-      }
-      document.body.appendChild(script)
-    },
-
-    initializeCalendlyInline() {
-      if (window.Calendly) {
-        // Initialize hidden inline widget
-        window.Calendly.initInlineWidget({
-          url: 'https://calendly.com/vishnukarthik2912/one-to-one-consulation?background_color=db4a2b&text_color=ffffff&primary_color=ffb1a0',
-          parentElement: document.getElementById('calendly-inline-widget'),
-          prefill: {},
-          utm: {},
-        })
-      }
-    },
-
-    openCalendlyPopup() {
-      if (window.Calendly) {
-        // Open Calendly popup when datetime input is clicked
-        window.Calendly.initPopupWidget({
-          url: 'https://calendly.com/vishnukarthik2912/one-to-one-consulation',
-          prefill: {
-            email: this.form.email,
-            firstName: this.form.firstName,
-            lastName: this.form.lastName,
-            name: `${this.form.firstName} ${this.form.lastName}`.trim(),
-          },
-          utm: {},
-        })
-
-        // Listen for Calendly events
-        window.addEventListener('message', (e) => {
-          if (e.data.event && e.data.event.indexOf('calendly') === 0) {
-            if (e.data.event === 'calendly.event_scheduled') {
-              // Update the datetime field when an event is scheduled
-              const eventDetails = e.data.payload
-              if (eventDetails.event && eventDetails.event.start_time) {
-                // Convert to local datetime format
-                const startTime = new Date(eventDetails.event.start_time)
-                const localDateTime = startTime.toISOString().slice(0, 16)
-                this.form.preferredDateTime = localDateTime
-              }
-            }
-          }
-        })
-      } else {
-        alert('Calendly is still loading. Please try again in a moment.')
-      }
-    },
-
     validateForm() {
       this.errors = {}
 
@@ -304,6 +235,17 @@ export default {
       return emailRegex.test(email)
     },
 
+    formatDate(dateString) {
+      if (!dateString) return ''
+      const date = new Date(dateString)
+      return date.toLocaleDateString('en-IN', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    },
+
     async submitForm() {
       if (!this.validateForm()) return
 
@@ -313,12 +255,13 @@ export default {
         const templateParams = {
           first_name: this.form.firstName,
           last_name: this.form.lastName,
+          full_name: this.form.firstName + ' ' + this.form.lastName,
           email: this.form.email,
           phone: this.form.phone,
-          occupation: this.form.occupation,
+          occupation: this.form.occupation || 'Not specified',
           income_range: this.form.incomeRange,
-          preferred_datetime: this.form.preferredDateTime,
-          message: this.form.message,
+          preferredDay: this.form.preferredDay,
+          message: this.form.message || 'No additional message',
         }
 
         await emailjs.send(
@@ -346,7 +289,7 @@ export default {
         phone: '',
         occupation: '',
         incomeRange: '',
-        preferredDateTime: '',
+        preferredDate: '',
         message: '',
       }
       this.errors = {}

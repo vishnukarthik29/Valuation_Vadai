@@ -34,7 +34,7 @@
             </li> -->
             <li>
               <router-link to="/Appointment" class="badge">
-                <i class="bi bi-telephone-plus-fill"></i> Schedule the Call
+                <i class="bi bi-telephone-plus-fill"></i> Book a Call
               </router-link>
             </li>
           </ul>
