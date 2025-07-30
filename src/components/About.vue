@@ -38,13 +38,13 @@
     </section>
 
     <!-- Our Team -->
-    <section class="section section-secondary">
+    <!-- <section class="section section-secondary">
       <div class="container">
         <div class="section-title">
           <h2>Meet Our Team</h2>
         </div>
 
-        <!-- Swiper for Team -->
+        
         <div class="swiper-container-wrapper">
           <swiper
             :slidesPerView="1"
@@ -78,7 +78,7 @@
             </swiper-slide>
           </swiper>
 
-          <!-- Navigation buttons for team -->
+          
           <div class="custom-swiper-button-prev">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 

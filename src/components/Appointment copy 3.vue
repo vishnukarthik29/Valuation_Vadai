@@ -3,6 +3,7 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
+        <!-- <div class="badge">Schedule Your Consultation</div> -->
         <h1>
           Book Your
           <span class="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent"
@@ -35,7 +36,6 @@
               </div>
             </div>
           </div>
-
           <!-- Appointment Form -->
           <div class="card">
             <h2 class="card-title">Schedule Your Appointment</h2>
@@ -124,16 +124,7 @@
               </div>
               <div class="form-group">
                 <label>Preferred Date & Time</label>
-                <input
-                  type="datetime-local"
-                  class="form-input"
-                  v-model="form.preferredDateTime"
-                  @click="openCalendlyPopup"
-                  readonly
-                  placeholder="Click to select date & time via Calendly"
-                  style="cursor: pointer"
-                />
-                <small style="color: #666; font-size: 12px">Click to open Calendly scheduler</small>
+                <input type="datetime-local" class="form-input" v-model="form.preferredDateTime" />
               </div>
               <div class="form-group">
                 <label>Message</label>
@@ -157,19 +148,10 @@
         </div>
       </div>
     </section>
-
-    <!-- Hidden Calendly Inline Widget -->
-    <div
-      class="calendly-inline-widget"
-      data-url="https://calendly.com/vishnukarthik2912/one-to-one-consulation"
-      style="display: none; min-width: 320px; height: 700px"
-    ></div>
   </div>
 </template>
 
 <script>
-import emailjs from 'emailjs-com'
-
 export default {
   name: 'AppointmentBooking',
   data() {
@@ -186,7 +168,17 @@ export default {
       },
       errors: {},
       isSubmitting: false,
-      calendlyLoaded: false,
+      contactInfo: {
+        phone: '+91 98765 43210',
+        phoneNumber: '+919876543210',
+        email: 'info@valuationvadai.com',
+        address: '123 Business District,<br />Financial Center,<br />Mumbai, MH - 400001',
+      },
+      officeHours: {
+        'Monday - Friday': '9:00 AM - 6:00 PM',
+        Saturday: '10:00 AM - 4:00 PM',
+        Sunday: 'Closed',
+      },
       expectations: [
         {
           title: 'Initial Consultation (30 mins)',
@@ -207,91 +199,28 @@ export default {
       ],
     }
   },
-  mounted() {
-    this.loadCalendly()
-  },
   methods: {
-    loadCalendly() {
-      // Load Calendly CSS
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = 'https://assets.calendly.com/assets/external/widget.css'
-      document.head.appendChild(link)
-
-      // Load Calendly JS
-      const script = document.createElement('script')
-      script.src = 'https://assets.calendly.com/assets/external/widget.js'
-      script.async = true
-      script.onload = () => {
-        this.calendlyLoaded = true
-        this.initializeCalendlyInline()
-      }
-      document.body.appendChild(script)
-    },
-
-    initializeCalendlyInline() {
-      if (window.Calendly) {
-        // Initialize hidden inline widget
-        window.Calendly.initInlineWidget({
-          url: 'https://calendly.com/vishnukarthik2912/one-to-one-consulation?background_color=db4a2b&text_color=ffffff&primary_color=ffb1a0',
-          parentElement: document.getElementById('calendly-inline-widget'),
-          prefill: {},
-          utm: {},
-        })
-      }
-    },
-
-    openCalendlyPopup() {
-      if (window.Calendly) {
-        // Open Calendly popup when datetime input is clicked
-        window.Calendly.initPopupWidget({
-          url: 'https://calendly.com/vishnukarthik2912/one-to-one-consulation',
-          prefill: {
-            email: this.form.email,
-            firstName: this.form.firstName,
-            lastName: this.form.lastName,
-            name: `${this.form.firstName} ${this.form.lastName}`.trim(),
-          },
-          utm: {},
-        })
-
-        // Listen for Calendly events
-        window.addEventListener('message', (e) => {
-          if (e.data.event && e.data.event.indexOf('calendly') === 0) {
-            if (e.data.event === 'calendly.event_scheduled') {
-              // Update the datetime field when an event is scheduled
-              const eventDetails = e.data.payload
-              if (eventDetails.event && eventDetails.event.start_time) {
-                // Convert to local datetime format
-                const startTime = new Date(eventDetails.event.start_time)
-                const localDateTime = startTime.toISOString().slice(0, 16)
-                this.form.preferredDateTime = localDateTime
-              }
-            }
-          }
-        })
-      } else {
-        alert('Calendly is still loading. Please try again in a moment.')
-      }
-    },
-
     validateForm() {
       this.errors = {}
 
       if (!this.form.firstName.trim()) {
         this.errors.firstName = 'First name is required'
       }
+
       if (!this.form.lastName.trim()) {
         this.errors.lastName = 'Last name is required'
       }
+
       if (!this.form.email.trim()) {
         this.errors.email = 'Email is required'
       } else if (!this.isValidEmail(this.form.email)) {
         this.errors.email = 'Please enter a valid email address'
       }
+
       if (!this.form.phone.trim()) {
         this.errors.phone = 'Phone number is required'
       }
+
       if (!this.form.incomeRange) {
         this.errors.incomeRange = 'Please select your income range'
       }
@@ -305,37 +234,37 @@ export default {
     },
 
     async submitForm() {
-      if (!this.validateForm()) return
+      if (!this.validateForm()) {
+        return
+      }
 
       this.isSubmitting = true
 
       try {
-        const templateParams = {
-          first_name: this.form.firstName,
-          last_name: this.form.lastName,
-          email: this.form.email,
-          phone: this.form.phone,
-          occupation: this.form.occupation,
-          income_range: this.form.incomeRange,
-          preferred_datetime: this.form.preferredDateTime,
-          message: this.form.message,
-        }
+        // Simulate API call - replace with actual API endpoint
+        await this.sendAppointmentRequest(this.form)
 
-        await emailjs.send(
-          'service_5dogksj',
-          'template_l58a1yr',
-          templateParams,
-          'HTFS9qX8vFp_ehgL2',
-        )
-
+        // Show success message
         alert('Appointment request submitted successfully! We will contact you within 24 hours.')
+
+        // Reset form
         this.resetForm()
       } catch (error) {
-        console.error('EmailJS error:', error)
+        console.error('Error submitting appointment:', error)
         alert('There was an error submitting your appointment. Please try again.')
       } finally {
         this.isSubmitting = false
       }
+    },
+
+    async sendAppointmentRequest(formData) {
+      // Replace this with your actual API call
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('Appointment request:', formData)
+          resolve()
+        }, 1000)
+      })
     },
 
     resetForm() {

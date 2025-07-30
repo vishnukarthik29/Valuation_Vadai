@@ -18,12 +18,12 @@
               <router-link
                 to="/About"
                 @click="closeMenu"
-                class="block text-gray-100 font-medium px-4 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:text-yellow-400"
+                class="block text-gray-100 font-medium px-4 py-3 rounded-l transition-all duration-300 hover:bg-white/10 hover:text-yellow-400"
               >
                 About Us
               </router-link>
             </li>
-            <li>
+            <!-- <li>
               <router-link
                 to="/Blog"
                 @click="closeMenu"
@@ -31,7 +31,7 @@
               >
                 Blog
               </router-link>
-            </li>
+            </li> -->
             <li>
               <router-link to="/Appointment" class="badge">
                 <i class="bi bi-telephone-plus-fill"></i> Schedule the Call
@@ -77,7 +77,7 @@
                 About Us
               </router-link>
             </li>
-            <li>
+            <!-- <li>
               <router-link
                 to="/Blog"
                 @click="closeMenu"
@@ -85,7 +85,7 @@
               >
                 Blog
               </router-link>
-            </li>
+            </li> -->
 
             <li>
               <router-link to="/Appointment" class="badge">
