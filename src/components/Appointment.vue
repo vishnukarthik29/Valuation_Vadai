@@ -123,7 +123,7 @@
                 }}</span>
               </div>
               <div class="form-group">
-                <label>Preferred Day</label>
+                <label>Preferred Day *</label>
                 <select class="form-input" v-model="form.preferredDay" required>
                   <option disabled value="">Select a day</option>
                   <option value="Saturday">Saturday</option>

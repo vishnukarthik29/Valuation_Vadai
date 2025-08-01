@@ -6,7 +6,7 @@ import Appointment from '@/components/Appointment.vue'
 import Blog from '@/components/Blog.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory('/Valuation_Vadai/'),
   routes: [
     {
       path: '/',
@@ -36,6 +36,16 @@ const router = createRouter({
       ],
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        top: 0,
+        behavior: 'smooth',
+      }
+    }
+    return { top: 0 }
+  },
 })
 
 export default router
