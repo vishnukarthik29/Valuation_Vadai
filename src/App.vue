@@ -6,7 +6,7 @@
 html,
 body {
   height: 100%;
-  overflow: auto;
+  /* overflow: auto; */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
 }

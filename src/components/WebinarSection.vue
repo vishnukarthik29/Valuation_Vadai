@@ -103,7 +103,7 @@
             </div>
             <div class="form-group">
               <label for="webinarType" class="block text-lg font-semibold text-black"
-                >Webinar Type</label
+                >Webinar Type *</label
               >
               <select id="webinarType" v-model="formData.webinarType" required>
                 <option style="color: #000000" value="Fundamental Analysis">
@@ -115,7 +115,7 @@
 
             <div class="form-group">
               <label for="webinarDate" class="block text-lg font-semibold text-black"
-                >Date and Time</label
+                >Date and Time *</label
               >
               <select id="webinarDate" v-model="formData.webinarDate" required>
                 <option style="color: #000000" value="">Select Date and Time</option>
@@ -127,7 +127,7 @@
 
             <div class="form-group">
               <label for="hearAbout" class="block text-lg font-semibold text-black"
-                >How did you hear about us?</label
+                >How did you hear about us? *</label
               >
               <select id="hearAbout" v-model="formData.hearAbout" required>
                 <option value="">Select an option</option>
@@ -336,7 +336,7 @@ export default {
   width: 100%;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .webinar-cta:hover {

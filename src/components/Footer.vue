@@ -20,12 +20,12 @@
         <div class="footer-section">
           <h4 class="section-title">Quick Links</h4>
           <div class="link-list">
-            <!-- <router-link to="/About" class="footer-link"> About Us </router-link> -->
-            <a href="/Valuation_Vadai/About" class="footer-link">About us</a>
-            <a href="/Valuation_Vadai/#webinar" class="footer-link">Webinars</a>
+            <router-link to="/About" class="footer-link"> About Us </router-link>
+            <!-- <a href="/About" class="footer-link">About us</a> -->
+            <a href="/#webinar" class="footer-link">Webinars</a>
             <!-- <a href="/Valuation_Vadai/Blog" class="footer-link">Blogs</a> -->
-            <!-- <router-link to="/Appointment" class="footer-link"> Book Appointment </router-link> -->
-            <a href="/Valuation_Vadai/Appointment" class="footer-link">Book Appointment</a>
+            <router-link to="/Appointment" class="footer-link"> Book Appointment </router-link>
+            <!-- <a href="/Appointment" class="footer-link">Book Appointment</a> -->
           </div>
         </div>
 
@@ -39,7 +39,9 @@
             </div> -->
             <div class="contact-item">
               <span class="contact-icon">✉️</span>
-              <span class="contact-text">info@valuationvadai.com</span>
+              <a href="mailto:info@valuationandvadai.in" class="contact-text">
+    info@valuationvadai.in
+  </a>
             </div>
             <div class="contact-item">
               <span class="contact-icon">📍</span>
@@ -52,7 +54,7 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <p class="copyright">
-          © 2025 Valuation and Vadai. All rights reserved. | Crafted with expertise 🔥
+          © 2025 Valuation and Vadai. All rights reserved. |  <a href="https://vishnukarthik29.github.io/Portfolio/" target="_blank" class="hover:underline">Developed by VK</a>
         </p>
       </div>
     </div>

@@ -6,9 +6,10 @@
       <div class="flex justify-between items-center px-2 py-4">
         <!-- Logo Section -->
         <div class="flex items-center gap-2">
-          <a href="/Valuation_Vadai/">
+            <router-link
+                to="/">
             <img src="/images/headerlogo.jpg" alt="Logo" class="h-12" />
-          </a>
+            </router-link>
         </div>
 
         <!-- Desktop Navigation -->
@@ -89,7 +90,7 @@
 
             <li>
               <router-link to="/Appointment" class="badge">
-                <i class="bi bi-telephone-plus-fill"></i> Schedule the Call
+                <i class="bi bi-telephone-plus-fill"></i> Book a Call
               </router-link>
             </li>
           </ul>

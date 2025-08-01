@@ -163,7 +163,7 @@
 import emailjs from 'emailjs-com'
 
 export default {
-  name: 'AppointmentBooking',
+  name: 'Appointment',
   data() {
     return {
       form: {
@@ -295,9 +295,9 @@ export default {
       this.errors = {}
     },
   },
-  mounted() {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  },
+  // mounted() {
+  //   window.scrollTo({ top: 0, behavior: 'smooth' })
+  // },
 }
 </script>
 

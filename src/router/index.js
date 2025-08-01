@@ -6,7 +6,7 @@ import Appointment from '@/components/Appointment.vue'
 import Blog from '@/components/Blog.vue'
 
 const router = createRouter({
-  history: createWebHistory('/Valuation_Vadai/'),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
@@ -14,22 +14,22 @@ const router = createRouter({
       component: Main,
       children: [
         {
-          path: '/',
+          path: '',
           name: 'Index',
           component: Index,
         },
         {
-          path: '/About',
+          path: 'About',
           name: 'About',
           component: About,
         },
         {
-          path: '/Blog',
+          path: 'Blog',
           name: Blog,
           component: Blog,
         },
         {
-          path: '/Appointment',
+          path: 'Appointment',
           name: 'Appointment',
           component: Appointment,
         },
@@ -37,18 +37,24 @@ const router = createRouter({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
+    // Handle back/forward navigation
+    if (savedPosition) {
+      return savedPosition;
+    }
+    
+    // Handle hash links (anchor navigation)
     if (to.hash) {
       return {
         el: to.hash,
-        top: 0,
         behavior: 'smooth',
-      }
+      };
     }
-    else{
-      return { top: 0,
-      behavior:'smooth',
-     }}
     
+    // Default: scroll to top for route changes
+    return { 
+      top: 0, 
+      behavior: 'smooth' 
+    };
   },
 })
 
