@@ -20,7 +20,7 @@
         <div class="footer-section">
           <h4 class="section-title">Quick Links</h4>
           <div class="link-list">
-            <router-link to="/About" class="footer-link"> About Us </router-link>
+            <!-- <router-link to="/About" class="footer-link"> About Us </router-link> -->
             <a href="/Valuation_Vadai/About" class="footer-link">About us</a>
             <a href="/Valuation_Vadai/#webinar" class="footer-link">Webinars</a>
             <!-- <a href="/Valuation_Vadai/Blog" class="footer-link">Blogs</a> -->
