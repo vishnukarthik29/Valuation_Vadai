@@ -21,6 +21,11 @@ export default {
     HeaderNav,
     FooterSection,
   },
+  watch: {
+    $route(to, from) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  },
 }
 </script>
 

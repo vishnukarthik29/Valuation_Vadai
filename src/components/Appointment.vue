@@ -295,6 +295,9 @@ export default {
       this.errors = {}
     },
   },
+  mounted() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  },
 }
 </script>
 
