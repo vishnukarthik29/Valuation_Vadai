@@ -11,13 +11,6 @@
           Consultation
         </h1>
         <p>Schedule a consultation to discuss your investment goals.</p>
-        
-        <!-- Mobile Modal Trigger Button -->
-        <div class="mobile-only">
-          <button @click="openModal" class="btn btn-primary btn-large">
-            Schedule Appointment
-          </button>
-        </div>
       </div>
     </section>
 
@@ -43,135 +36,9 @@
             </div>
           </div>
 
-          <!-- Desktop Form -->
-          <div class="desktop-only">
-            <div class="card">
-              <h2 class="card-title">Schedule Your Appointment</h2>
-              <p style="color: #666; margin-bottom: 24px">
-                Fill out the form below and we'll get back to you within 24 hours.
-              </p>
-              <form @submit.prevent="submitForm">
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label>First Name *</label>
-                    <input
-                      type="text"
-                      class="form-input"
-                      placeholder="Enter your first name"
-                      v-model="form.firstName"
-                      :class="{ error: errors.firstName }"
-                      required
-                    />
-                    <span v-if="errors.firstName" class="error-message">{{ errors.firstName }}</span>
-                  </div>
-                  <div class="form-group">
-                    <label>Last Name *</label>
-                    <input
-                      type="text"
-                      class="form-input"
-                      placeholder="Enter your last name"
-                      v-model="form.lastName"
-                      :class="{ error: errors.lastName }"
-                      required
-                    />
-                    <span v-if="errors.lastName" class="error-message">{{ errors.lastName }}</span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Email Address *</label>
-                  <input
-                    type="email"
-                    class="form-input"
-                    placeholder="Enter your email"
-                    v-model="form.email"
-                    :class="{ error: errors.email }"
-                    required
-                  />
-                  <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
-                </div>
-                <div class="form-group">
-                  <label>Phone Number *</label>
-                  <input
-                    type="tel"
-                    class="form-input"
-                    placeholder="+91 Enter your number"
-                    v-model="form.phone"
-                    :class="{ error: errors.phone }"
-                    required
-                  />
-                  <span v-if="errors.phone" class="error-message">{{ errors.phone }}</span>
-                </div>
-                <div class="form-group">
-                  <label>Occupation *</label>
-                  <select class="form-input" v-model="form.occupation" required>
-                    <option value="">Select your occupation</option>
-                    <option value="student">Student</option>
-                    <option value="salaried">Salaried</option>
-                    <option value="self-employed">Self Employed</option>
-                    <option value="others">Others</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Income Range *</label>
-                  <select
-                    class="form-input"
-                    v-model="form.incomeRange"
-                    :class="{ error: errors.incomeRange }"
-                    required
-                  >
-                    <option value="">Select your income range</option>
-                    <option value="less-than-1-lakh">Less than ₹1 Lakh</option>
-                    <option value="1-3-lakh">₹1 - 3 Lakh</option>
-                    <option value="3-6-lakh">₹3 - 6 Lakh</option>
-                    <option value="6-10-lakh">₹6 - 10 Lakh</option>
-                    <option value="greater-than-10-lakh">Greater than ₹10 Lakh</option>
-                  </select>
-                  <span v-if="errors.incomeRange" class="error-message">{{
-                    errors.incomeRange
-                  }}</span>
-                </div>
-                <div class="form-group">
-                  <label>Preferred Day *</label>
-                  <select class="form-input" v-model="form.preferredDay" required>
-                    <option disabled value="">Select a day</option>
-                    <option value="Saturday">Saturday</option>
-                    <option value="Sunday">Sunday</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label>Message</label>
-                  <textarea
-                    class="form-input"
-                    placeholder="Tell us about your requirements and any specific questions you have..."
-                    rows="4"
-                    v-model="form.message"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  style="width: 100%; padding: 12px"
-                  :disabled="isSubmitting"
-                >
-                  {{ isSubmitting ? 'Scheduling...' : 'Schedule Appointment' }}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mobile Modal -->
-    <div v-if="showModal" class="modal-overlay" @click="closeModal">
-      <div class="modal-content" @click.stop>
-        <div class="modal-header">
-          <h2>Schedule Your Appointment</h2>
-          <button @click="closeModal" class="close-btn">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="card modal-form">
+          <!-- Appointment Form -->
+          <div class="card">
+            <h2 class="card-title">Schedule Your Appointment</h2>
             <p style="color: #666; margin-bottom: 24px">
               Fill out the form below and we'll get back to you within 24 hours.
             </p>
@@ -262,6 +129,9 @@
                   <option value="Saturday">Saturday</option>
                   <option value="Sunday">Sunday</option>
                 </select>
+                <!-- <small style="color: #666; font-size: 12px">
+                  Select your preferred consultation day
+                </small> -->
               </div>
 
               <div class="form-group">
@@ -285,16 +155,17 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
 <script>
+import emailjs from 'emailjs-com'
+
 export default {
   name: 'Appointment',
   data() {
     return {
-      showModal: false,
       form: {
         firstName: '',
         lastName: '',
@@ -327,17 +198,14 @@ export default {
       ],
     }
   },
+  computed: {
+    minDate() {
+      // Set minimum date to today
+      const today = new Date()
+      return today.toISOString().split('T')[0]
+    },
+  },
   methods: {
-    openModal() {
-      this.showModal = true
-      document.body.style.overflow = 'hidden' // Prevent background scrolling
-    },
-
-    closeModal() {
-      this.showModal = false
-      document.body.style.overflow = 'auto' // Restore scrolling
-    },
-
     validateForm() {
       this.errors = {}
 
@@ -367,13 +235,23 @@ export default {
       return emailRegex.test(email)
     },
 
+    formatDate(dateString) {
+      if (!dateString) return ''
+      const date = new Date(dateString)
+      return date.toLocaleDateString('en-IN', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    },
+
     async submitForm() {
       if (!this.validateForm()) return
 
       this.isSubmitting = true
 
       try {
-        // Replace with your actual emailjs implementation
         const templateParams = {
           first_name: this.form.firstName,
           last_name: this.form.lastName,
@@ -386,25 +264,17 @@ export default {
           message: this.form.message || 'No additional message',
         }
 
-        // Simulate API call - replace with actual emailjs call
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        
-        // await emailjs.send(
-        //   'service_5dogksj',
-        //   'template_l58a1yr',
-        //   templateParams,
-        //   'HTFS9qX8vFp_ehgL2',
-        // )
+        await emailjs.send(
+          'service_5dogksj',
+          'template_l58a1yr',
+          templateParams,
+          'HTFS9qX8vFp_ehgL2',
+        )
 
         alert('Appointment request submitted successfully! We will contact you within 24 hours.')
         this.resetForm()
-        
-        // Close modal if on mobile
-        if (this.showModal) {
-          this.closeModal()
-        }
       } catch (error) {
-        console.error('Form submission error:', error)
+        console.error('EmailJS error:', error)
         alert('There was an error submitting your appointment. Please try again.')
       } finally {
         this.isSubmitting = false
@@ -419,29 +289,15 @@ export default {
         phone: '',
         occupation: '',
         incomeRange: '',
-        preferredDay: '',
+        preferredDate: '',
         message: '',
       }
       this.errors = {}
     },
   },
-  
-  // Handle escape key to close modal
-  mounted() {
-    const handleEscapeKey = (e) => {
-      if (e.key === 'Escape' && this.showModal) {
-        this.closeModal()
-      }
-    }
-    
-    document.addEventListener('keydown', handleEscapeKey)
-    
-    // Cleanup on unmount
-    this.$once('hook:beforeDestroy', () => {
-      document.removeEventListener('keydown', handleEscapeKey)
-      document.body.style.overflow = 'auto' // Ensure scrolling is restored
-    })
-  }
+  // mounted() {
+  //   window.scrollTo({ top: 0, behavior: 'smooth' })
+  // },
 }
 </script>
 
@@ -454,6 +310,8 @@ export default {
 
 .appointment-page {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* background-color: #fff1ef; */
+  /* background: url('/images/subtle-prism (1).svg'); */
   background: #ffffff;
   color: #332a2e;
   line-height: 1.6;
@@ -465,37 +323,34 @@ export default {
   padding: 0 16px;
 }
 
-/* Responsive Display Classes */
-.mobile-only {
-  display: none;
-}
-
-.desktop-only {
-  display: block;
-}
-
-@media (max-width: 1024px) {
-  .mobile-only {
-    display: block;
-  }
-  
-  .desktop-only {
-    display: none;
-  }
-}
-
 /* Hero Section */
 .hero {
+  /* padding: 80px 16px; */
   padding-top: 35px;
   padding-left: 16px;
   padding-right: 16px;
+
   text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #ffb1a0;
+  color: #332a2e;
+  border-radius: 16px;
+  font-size: 14px;
+  margin-bottom: 24px;
 }
 
 .hero h1 {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 24px;
+}
+
+.text-primary {
+  color: #db4a2b;
 }
 
 .hero p {
@@ -507,6 +362,7 @@ export default {
 
 /* Main Content */
 .main-content {
+  /* padding: 48px 16px; */
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 48px;
@@ -538,7 +394,6 @@ export default {
   margin-bottom: 8px;
 }
 
-/* Form Styles */
 .form-group {
   margin-bottom: 24px;
 }
@@ -556,7 +411,6 @@ export default {
   border-radius: 6px;
   background: #fff1ef;
   transition: border-color 0.3s;
-  font-size: 16px;
 }
 
 .form-input:focus {
@@ -590,10 +444,8 @@ export default {
 textarea {
   resize: vertical;
   min-height: 100px;
-  font-family: inherit;
 }
 
-/* Button Styles */
 .btn {
   padding: 8px 16px;
   border: 1px solid #db4a2b;
@@ -604,8 +456,6 @@ textarea {
   transition: all 0.3s;
   cursor: pointer;
   display: inline-block;
-  font-size: 16px;
-  font-weight: 500;
 }
 
 .btn:hover {
@@ -628,135 +478,48 @@ textarea {
   cursor: not-allowed;
 }
 
-.btn-large {
-  padding: 16px 32px;
-  font-size: 18px;
-  margin-top: 24px;
-}
-
-/* Modal Styles */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+.contact-item {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  z-index: 1000;
-  padding: 20px;
-  overflow-y: auto;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
-.modal-content {
-  background: white;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 500px;
-  max-height: 90vh;
-  overflow-y: auto;
-  margin-top: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+.contact-icon {
+  width: 20px;
+  height: 20px;
+  color: #db4a2b;
 }
 
-.modal-header {
+.office-hours {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 32px;
-  border-bottom: 1px solid #ffded7;
-  position: sticky;
-  top: 0;
-  background: white;
-  z-index: 1;
+  margin-bottom: 12px;
 }
 
-.modal-header h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
+.highlight-box {
+  background: rgba(255, 177, 160, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 16px;
 }
 
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #666;
-  padding: 0;
-  width: 32px;
-  height: 32px;
+.cta-section {
+  background: #f2efef;
+  padding: 80px 16px;
+  text-align: center;
+}
+
+.btn-group {
   display: flex;
-  align-items: center;
+  gap: 16px;
   justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.3s;
+  flex-wrap: wrap;
 }
 
-.close-btn:hover {
-  background: #f5f5f5;
-  color: #333;
-}
-
-.modal-body {
-  padding: 0;
-}
-
-.modal-form {
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-/* Mobile Specific Styles */
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2rem;
   }
-  
-  .modal-overlay {
-    padding: 0;
-  }
-  
-  .modal-content {
-    border-radius: 0;
-    max-height: 100vh;
-    margin-top: 0;
-    height: 100vh;
-  }
-  
-  .modal-header {
-    padding: 16px 20px;
-  }
-  
-  .modal-body .card {
-    padding: 20px;
-  }
-}
-
-/* Gradient text effect */
-.bg-gradient-to-r {
-  background: linear-gradient(to right, #fb923c, #f87171);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-.from-orange-400 {
-  --tw-gradient-from: #fb923c;
-}
-
-.to-red-400 {
-  --tw-gradient-to: #f87171;
-}
-
-.bg-clip-text {
-  background-clip: text;
-  -webkit-background-clip: text;
-}
-
-.text-transparent {
-  color: transparent;
 }
 </style>

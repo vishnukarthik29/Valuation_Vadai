@@ -9,7 +9,7 @@
               <span class="logo-text">V&V</span>
             </div> -->
             <img src="/images/footer.jpg" style="width: 25px; height: 25px" />
-            <span class="brand-name">Valuation and Vadai</span>
+            <span class="brand-name">Valuation & Vadai</span>
           </div>
           <!-- <p class="brand-description">
             Expert financial consulting and valuation services for businesses and individuals.
@@ -40,7 +40,7 @@
             <div class="contact-item">
               <span class="contact-icon">✉️</span>
               <a href="mailto:info@valuationandvadai.in" class="contact-text">
-    info@valuationvadai.in
+    info@valuationandvadai.in
   </a>
             </div>
             <div class="contact-item">
@@ -54,7 +54,7 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <p class="copyright">
-          © 2025 Valuation and Vadai. All rights reserved. |  <a href="https://vishnukarthik29.github.io/Portfolio/" target="_blank" class="hover:underline">Developed by VK</a>
+          © 2025 Valuation & Vadai. All rights reserved. |  <a href="https://vishnukarthik29.github.io/Portfolio/" target="_blank" class="hover:underline">Developed by VK</a>
         </p>
       </div>
     </div>
