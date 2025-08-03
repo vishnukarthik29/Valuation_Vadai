@@ -11,13 +11,6 @@
           Consultation
         </h1>
         <p>Schedule a consultation to discuss your investment goals.</p>
-        
-        <!-- Mobile Modal Trigger Button -->
-        <div class="mobile-only">
-          <button @click="openModal" class="btn btn-primary btn-large">
-            Schedule Appointment
-          </button>
-        </div>
       </div>
     </section>
 
@@ -42,6 +35,12 @@
               </div>
             </div>
           </div>
+          <!-- Mobile Modal Trigger Button -->
+          <div class="mobile-only">
+            <button @click="openModal" class="btn btn-primary btn-large">
+              Schedule Appointment
+            </button>
+          </div>
 
           <!-- Desktop Form -->
           <div class="desktop-only">
@@ -62,7 +61,9 @@
                       :class="{ error: errors.firstName }"
                       required
                     />
-                    <span v-if="errors.firstName" class="error-message">{{ errors.firstName }}</span>
+                    <span v-if="errors.firstName" class="error-message">{{
+                      errors.firstName
+                    }}</span>
                   </div>
                   <div class="form-group">
                     <label>Last Name *</label>
@@ -290,6 +291,7 @@
 </template>
 
 <script>
+import emailjs from 'emailjs-com'
 export default {
   name: 'Appointment',
   data() {
@@ -387,18 +389,18 @@ export default {
         }
 
         // Simulate API call - replace with actual emailjs call
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        
-        // await emailjs.send(
-        //   'service_5dogksj',
-        //   'template_l58a1yr',
-        //   templateParams,
-        //   'HTFS9qX8vFp_ehgL2',
-        // )
+        // await new Promise((resolve) => setTimeout(resolve, 10000))
+
+        await emailjs.send(
+          'service_5dogksj',
+          'template_l58a1yr',
+          templateParams,
+          'HTFS9qX8vFp_ehgL2',
+        )
 
         alert('Appointment request submitted successfully! We will contact you within 24 hours.')
         this.resetForm()
-        
+
         // Close modal if on mobile
         if (this.showModal) {
           this.closeModal()
@@ -424,24 +426,36 @@ export default {
       }
       this.errors = {}
     },
-  },
-  
-  // Handle escape key to close modal
-  mounted() {
-    const handleEscapeKey = (e) => {
-      if (e.key === 'Escape' && this.showModal) {
+    handleEscapeKey(event) {
+      if (event.key === 'Escape') {
         this.closeModal()
       }
-    }
-    
-    document.addEventListener('keydown', handleEscapeKey)
-    
-    // Cleanup on unmount
-    this.$once('hook:beforeDestroy', () => {
-      document.removeEventListener('keydown', handleEscapeKey)
-      document.body.style.overflow = 'auto' // Ensure scrolling is restored
-    })
-  }
+    },
+  },
+
+  // Handle escape key to close modal
+  // mounted() {
+  //   const handleEscapeKey = (e) => {
+  //     if (e.key === 'Escape' && this.showModal) {
+  //       this.closeModal()
+  //     }
+  //   }
+
+  //   document.addEventListener('keydown', handleEscapeKey)
+
+  //   // Cleanup on unmount
+  //   this.$once('hook:beforeDestroy', () => {
+  //     document.removeEventListener('keydown', handleEscapeKey)
+  //     document.body.style.overflow = 'auto' // Ensure scrolling is restored
+  //   })
+  // },
+  mounted() {
+    document.addEventListener('keydown', this.handleEscapeKey)
+  },
+  beforeUnmount() {
+    document.removeEventListener('keydown', this.handleEscapeKey)
+    document.body.style.overflow = 'auto'
+  },
 }
 </script>
 
@@ -469,16 +483,25 @@ export default {
 .mobile-only {
   display: none;
 }
+.mobile-button-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* adjust as needed for your UI, 100vh may overflow with nav bars */
+}
 
 .desktop-only {
   display: block;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .mobile-only {
     display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  
+
   .desktop-only {
     display: none;
   }
@@ -631,13 +654,12 @@ textarea {
 .btn-large {
   padding: 16px 32px;
   font-size: 18px;
-  margin-top: 24px;
 }
 
 /* Modal Styles */
 .modal-overlay {
   position: fixed;
-  top: 0;
+  top: 55px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -715,22 +737,24 @@ textarea {
   .hero h1 {
     font-size: 2rem;
   }
-  
+
   .modal-overlay {
     padding: 0;
+    background: rgba(0, 0, 0, 0.5);
   }
-  
+
   .modal-content {
-    border-radius: 0;
+    border-radius: 30px;
     max-height: 100vh;
     margin-top: 0;
+    margin: 1rem;
     height: 100vh;
   }
-  
+
   .modal-header {
     padding: 16px 20px;
   }
-  
+
   .modal-body .card {
     padding: 20px;
   }

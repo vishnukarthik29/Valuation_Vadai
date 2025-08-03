@@ -422,7 +422,7 @@ export default {
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero h1 {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   .swiper-container-wrapper {

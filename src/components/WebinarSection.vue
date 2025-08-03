@@ -3,7 +3,9 @@
     <div class="container">
       <div class="webinar-content">
         <div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
+          <h1
+            class="text-5xl md:text-4xl lg:text-6xl font-bold text-black leading-tight text-center md:text-left"
+          >
             Attend our
             <span class="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
               Exclusive
@@ -119,9 +121,8 @@
               >
               <select id="webinarDate" v-model="formData.webinarDate" required>
                 <option style="color: #000000" value="">Select Date and Time</option>
-                <option style="color: #000000" value="jul23">Jul 23 | 07:00 PM</option>
-                <option style="color: #000000" value="jul24">Jul 24 | 07:00 PM</option>
-                <option style="color: #000000" value="jul25">Jul 25 | 07:00 PM</option>
+                <option style="color: #000000" value="sep14">Sep 14 | 03:00 PM</option>
+                <option style="color: #000000" value="sep28">Sep 28 | 03:00 PM</option>
               </select>
             </div>
 
@@ -182,7 +183,14 @@
         <div class="modal-header">
           <h3 class="modal-title">Register for Webinar</h3>
           <button @click="closeModal" class="modal-close">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -237,14 +245,15 @@
             <label class="block text-sm font-semibold text-gray-700 mb-1">Date and Time *</label>
             <select v-model="formData.webinarDate" required>
               <option style="color: #000000" value="">Select Date and Time</option>
-              <option style="color: #000000" value="jul23">Jul 23 | 07:00 PM</option>
-              <option style="color: #000000" value="jul24">Jul 24 | 07:00 PM</option>
-              <option style="color: #000000" value="jul25">Jul 25 | 07:00 PM</option>
+              <option style="color: #000000" value="sep14">Sep 14 | 03:00 PM</option>
+              <option style="color: #000000" value="sep28">Sep 28 | 03:00 PM</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label class="block text-sm font-semibold text-gray-700 mb-1">How did you hear about us? *</label>
+            <label class="block text-sm font-semibold text-gray-700 mb-1"
+              >How did you hear about us? *</label
+            >
             <select v-model="formData.hearAbout" required>
               <option value="">Select an option</option>
               <option style="color: #000000" value="youtube">YouTube</option>
@@ -255,11 +264,7 @@
             </select>
           </div>
 
-          <button
-            type="submit"
-            :disabled="isLoading"
-            class="modal-submit-btn"
-          >
+          <button type="submit" :disabled="isLoading" class="modal-submit-btn">
             <span v-if="isLoading">
               <svg
                 class="animate-spin h-5 w-5 text-white inline-block mr-2"
@@ -347,7 +352,7 @@ export default {
   beforeDestroy() {
     // Cleanup: restore scroll if component is destroyed while modal is open
     document.body.style.overflow = 'auto'
-  }
+  },
 }
 </script>
 
@@ -603,20 +608,20 @@ export default {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .desktop-form {
     display: none;
   }
-  
+
   .mobile-cta-container {
     display: block;
   }
-  
+
   .modal-content {
     margin: 1rem;
     max-height: calc(100vh - 2rem);
   }
-  
+
   .modal-form .phone-input .country-code {
     width: 70px !important;
   }

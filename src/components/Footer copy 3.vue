@@ -14,29 +14,6 @@
           <!-- <p class="brand-description">
             Expert financial consulting and valuation services for businesses and individuals.
           </p> -->
-          <div class="social-links">
-            <a
-              href="https://www.instagram.com/valuationandvadai/#"
-              class="social-link"
-              aria-label="Instagram"
-            >
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/company/valuationandvadai/about/"
-              class="social-link"
-              aria-label="LinkedIn"
-            >
-              <i class="bi bi-linkedin"></i>
-            </a>
-            <a
-              href="https://www.youtube.com/@ValuationandVadai"
-              class="social-link"
-              aria-label="YouTube"
-            >
-              <i class="bi bi-youtube"></i>
-            </a>
-          </div>
         </div>
 
         <!-- Quick Links -->
@@ -45,8 +22,7 @@
           <div class="link-list">
             <router-link to="/About" class="footer-link"> About Us </router-link>
             <!-- <a href="/About" class="footer-link">About us</a> -->
-            <router-link to="/#webinar" class="footer-link"> Webinars</router-link>
-            <!-- <a href="/#webinar" class="footer-link">Webinars</a> -->
+            <a href="/#webinar" class="footer-link">Webinars</a>
             <!-- <a href="/Valuation_Vadai/Blog" class="footer-link">Blogs</a> -->
             <router-link to="/Appointment" class="footer-link"> Book Appointment </router-link>
             <!-- <a href="/Appointment" class="footer-link">Book Appointment</a> -->
@@ -64,8 +40,8 @@
             <div class="contact-item">
               <span class="contact-icon">✉️</span>
               <a href="mailto:info@valuationandvadai.in" class="contact-text">
-                info@valuationandvadai.in
-              </a>
+    info@valuationandvadai.in
+  </a>
             </div>
             <div class="contact-item">
               <span class="contact-icon">📍</span>
@@ -78,13 +54,7 @@
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <p class="copyright">
-          © 2025 Valuation & Vadai. All rights reserved. |
-          <a
-            href="https://vishnukarthik29.github.io/Portfolio/"
-            target="_blank"
-            class="hover:underline"
-            >Developed by VK</a
-          >
+          © 2025 Valuation & Vadai. All rights reserved. |  <a href="https://vishnukarthik29.github.io/Portfolio/" target="_blank" class="hover:underline">Developed by VK</a>
         </p>
       </div>
     </div>
@@ -224,33 +194,6 @@ export default {
 .copyright {
   color: rgba(255, 241, 239, 0.6);
   margin: 0;
-}
-
-/* Social Media Links Styles */
-.social-links {
-  display: flex;
-  gap: 16px;
-  margin-top: 8px;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 241, 239, 0.1);
-  border-radius: 50%;
-  color: rgba(255, 241, 239, 0.8);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 18px;
-}
-
-.social-link:hover {
-  background-color: #db4a2b;
-  color: #fff1ef;
-  transform: translateY(-2px);
 }
 
 /* Responsive adjustments */

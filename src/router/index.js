@@ -39,22 +39,23 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     // Handle back/forward navigation
     if (savedPosition) {
-      return savedPosition;
+      return savedPosition
     }
-    
+
     // Handle hash links (anchor navigation)
-    if (to.hash) {
-      return {
-        el: to.hash,
-        behavior: 'smooth',
-      };
-    }
-    
+    // if (to.hash) {
+    //   return {
+    //     top: 0,
+    //     el: to.hash,
+    //     behavior: 'smooth',
+    //   }
+    // }
+
     // Default: scroll to top for route changes
-    return { 
-      top: 0, 
-      behavior: 'smooth' 
-    };
+    return {
+      top: 0,
+      behavior: 'smooth',
+    }
   },
 })
 
