@@ -26,11 +26,17 @@
             </p>
             <p class="font-semibold mt-2">What You will Learn:</p>
             <ul class="list-disc list-inside ml-2">
-              <li>What is Fundamental Analysis – and why it works</li>
+              <!-- <li>What is Fundamental Analysis – and why it works</li>
               <li>How to read financial statements like a pro</li>
               <li>Key ratios that reveal the real health of a company</li>
               <li>Valuation basics – understanding Intrinsic Value</li>
-              <li>Common mistakes beginners make (and how to avoid them)</li>
+              <li>Common mistakes beginners make (and how to avoid them)</li> -->
+              <li>Understand business models, segments & industry</li>
+              <li>Analyse competitors & macro trends</li>
+              <li>Read annual reports & income statements</li>
+              <li>Decode earnings call transcripts</li>
+              <li>Key financial ratios that actually matter</li>
+              <li>Build a basic Excel model for valuation</li>
             </ul>
             <p class="mt-2 font-semibold">👉 Reserve Your Spot – Limited Seats!</p>
           </div>

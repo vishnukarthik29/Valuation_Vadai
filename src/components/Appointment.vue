@@ -168,7 +168,7 @@
     <div v-if="showModal" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <div class="modal-header">
-          <h2>Schedule Your Appointment</h2>
+          <h4>Schedule Your Appointment</h4>
           <button @click="closeModal" class="close-btn">&times;</button>
         </div>
         <div class="modal-body">
@@ -659,7 +659,7 @@ textarea {
 /* Modal Styles */
 .modal-overlay {
   position: fixed;
-  top: 55px;
+  top: 60px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -692,6 +692,7 @@ textarea {
   position: sticky;
   top: 0;
   background: white;
+  font-weight: bold;
   z-index: 1;
 }
 
