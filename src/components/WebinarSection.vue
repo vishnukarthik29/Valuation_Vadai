@@ -127,8 +127,8 @@
               >
               <select id="webinarDate" v-model="formData.webinarDate" required>
                 <option style="color: #000000" value="">Select Date and Time</option>
-                <option style="color: #000000" value="sep14">Sep 14 | 03:00 PM</option>
-                <option style="color: #000000" value="sep28">Sep 28 | 03:00 PM</option>
+                <option style="color: #000000" value="Sept 14">Sep 14 | 03:00 PM</option>
+                <option style="color: #000000" value="Sept 28">Sep 28 | 03:00 PM</option>
               </select>
             </div>
 
@@ -140,7 +140,7 @@
                 <option value="">Select an option</option>
                 <option style="color: #000000" value="youtube">YouTube</option>
                 <option style="color: #000000" value="social-media">Social Media</option>
-                <option style="color: #000000" value="friend">Friend/Family</option>
+                <option style="color: #000000" value="friend/family">Friend/Family</option>
                 <option style="color: #000000" value="google">Google Search</option>
                 <option style="color: #000000" value="other">Other</option>
               </select>
@@ -321,6 +321,7 @@ export default {
       isModalOpen: false,
     }
   },
+
   methods: {
     openModal() {
       this.isModalOpen = true
@@ -330,6 +331,7 @@ export default {
       this.isModalOpen = false
       document.body.style.overflow = 'auto' // Restore scroll
     },
+
     submitForm() {
       this.isLoading = true
       emailjs
@@ -353,6 +355,11 @@ export default {
         .finally(() => {
           this.isLoading = false
         })
+    },
+  },
+  watch: {
+    'formData.webinarDate'(newval) {
+      console.log('📅 Selected Webinar Date:', newval)
     },
   },
   beforeDestroy() {

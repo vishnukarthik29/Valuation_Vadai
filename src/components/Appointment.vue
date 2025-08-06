@@ -392,10 +392,10 @@ export default {
         // await new Promise((resolve) => setTimeout(resolve, 10000))
 
         await emailjs.send(
-          'service_5dogksj',
-          'template_l58a1yr',
+          'service_1v9cvpr',
+          'template_kjxpkbq',
           templateParams,
-          'HTFS9qX8vFp_ehgL2',
+          'FC86_wt9mOFYCuP2g',
         )
 
         alert('Appointment request submitted successfully! We will contact you within 24 hours.')
