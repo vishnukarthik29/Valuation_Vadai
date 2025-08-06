@@ -251,8 +251,8 @@
             <label class="block text-sm font-semibold text-gray-700 mb-1">Date and Time *</label>
             <select v-model="formData.webinarDate" required>
               <option style="color: #000000" value="">Select Date and Time</option>
-              <option style="color: #000000" value="sep14">Sep 14 | 03:00 PM</option>
-              <option style="color: #000000" value="sep28">Sep 28 | 03:00 PM</option>
+              <option style="color: #000000" value="Sept 14">Sep 14 | 03:00 PM</option>
+              <option style="color: #000000" value="Sept 28">Sep 28 | 03:00 PM</option>
             </select>
           </div>
 
@@ -264,7 +264,7 @@
               <option value="">Select an option</option>
               <option style="color: #000000" value="youtube">YouTube</option>
               <option style="color: #000000" value="social-media">Social Media</option>
-              <option style="color: #000000" value="friend">Friend/Family</option>
+              <option style="color: #000000" value="friend/family">Friend/Family</option>
               <option style="color: #000000" value="google">Google Search</option>
               <option style="color: #000000" value="other">Other</option>
             </select>
@@ -333,7 +333,7 @@ export default {
     submitForm() {
       this.isLoading = true
       emailjs
-        .send('service_5dogksj', 'template_9070btn', this.formData, 'HTFS9qX8vFp_ehgL2')
+        .send('service_1v9cvpr', 'template_205tr5o', this.formData, 'FC86_wt9mOFYCuP2g')
         .then(() => {
           alert('✅ You are registered! A confirmation email has been sent.')
           this.formData = {
