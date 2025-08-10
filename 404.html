@@ -1,21 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0;url=/REPO_NAME/" />
-  </head>
-  <body>
+    <title>Redirecting...</title>
     <script>
-      // Change REPO_NAME to your GitHub repo name
-      var l = window.location;
+      // Change this to your repo name
       var repoBase = "/";
+
+      // Preserve the path and query by converting it to a hash
+      var l = window.location;
       var newUrl =
         repoBase +
-        "" +
+        "#" +
         l.pathname.replace(repoBase, "").replace(/^\//, "") +
         l.search +
         l.hash;
+
       window.location.replace(newUrl);
     </script>
+  </head>
+  <body>
+    Redirecting...
   </body>
 </html>
